@@ -1,35 +1,49 @@
-const EmployeeDataManagementRepository = require("../repositories/app.repository");
-const employeeDataManagementRepository = new EmployeeDataManagementRepository()
+const SavingsAccountRepository = require("../repositories/app.repository");
+const savingsAccountRepository = new SavingsAccountRepository()
 
-class EmployeeDataManagementService {
+class SavingsAccountService {
 
-  async getPersonalInformation(request_ms) {
+  async getSavingAccount(request_ms) {
 
     //transformation BIAN -> no BIAN
     const request_backend = {
-      documentType: request_ms.RetrievePersonalInformation.Person.PersonIdentification.TypeOfIdentification,
-      documentNumber: request_ms.RetrievePersonalInformation.Person.PersonIdentification.IdentityCardNumber
+      numero_cuenta: request_ms.Account.Identification
     };
 
-
-    const response_backend = await employeeDataManagementRepository.getPersonalInformation(request_backend);
+    const response_backend = await savingsAccountRepository.getSavingAccount(request_backend);
 
     //transformation no BIAN -> BIAN
     const response_ms = {
-      RetrievePersonalInformationResponse: {
-        Person: {
-          PersonIdentification: {
-            TypeOfIdentification: response_backend.documentType,
-            IdentityCardNumber: response_backend.documentNumber,
-            PersonName: {
-              GivenName: response_backend.firstName,
-              MiddleName: response_backend.lastName
-            },
-            Contact: {
-              MobilePhoneNumber: response_backend.phone,
-              PersonalEmailAddress: response_backend.email
-            }
-          }
+      RetrieveResponse: {
+        Account: {
+          Identification: response_backend.numero_cuenta,
+          BaseCurrency: response_backend.tipo_moneda_cuenta,
+          Status: response_backend.estado_cuenta,
+          Type: response_backend.tipo_cuenta
+        }
+      }
+    };
+
+    return response_ms;
+
+  }
+
+  async getCreateSavingAccount(request_ms) {
+
+    //transformation BIAN -> no BIAN
+    const request_backend = {
+      tipo_documento: request_ms.PersonIdentification.TypeOfIdentification,
+      numero_documento: request_ms.PersonIdentification.IdentityCardNumber
+    };
+
+    const response_backend = await savingsAccountRepository.getCreateSavingAccount(request_backend);
+
+    //transformation no BIAN -> BIAN
+    const response_ms = {
+      InitiateResponse: {
+        Account: {
+          Identification: response_backend.id_cuenta,
+          BaseCurrency: response_backend.tipo_moneda
         }
       }
     };
@@ -40,4 +54,4 @@ class EmployeeDataManagementService {
 
 }
 
-module.exports = EmployeeDataManagementService;
+module.exports = SavingsAccountService;

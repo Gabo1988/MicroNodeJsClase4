@@ -1,12 +1,19 @@
 const express = require('express')
 const router = express.Router();
 
-const EmployeeDataManagementController = require('../controllers/app.controller')
-const employeeDataManagementController = new EmployeeDataManagementController();
+const SavingsAccountController = require('../controllers/app.controller')
+const savingsAccountController = new SavingsAccountController();
 
-router.post('/personal-information/retrieve', async (req, res) => {
+router.post('/saving-account/retrieve', async (req, res) => {
 
-  const response = await employeeDataManagementController.getPersonalInformation(req.body);
+  const response = await savingsAccountController.getSavingAccount(req.body);
+  res.json(response);
+
+})
+
+router.post('/create-saving-account/initiate', async (req, res) => {
+
+  const response = await savingsAccountController.getCreateSavingAccount(req.body);
   res.json(response);
 
 })

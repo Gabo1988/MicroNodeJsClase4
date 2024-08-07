@@ -1,4 +1,5 @@
 module.exports =    {
     PORT: 3000,
-    BACKEND_PERSONAL_INFORMATION: 'https://apis.arquitecturabank.com/core/no-bian-employee-data-management/v1/personal-information'
+    BACKEND_SAVING_ACCOUNT_DETAIL: 'https://apis.arquitecturabank.com/core/api/v1/detalle-cuenta-ahorro',
+    BACKEND_SAVING_ACCOUNT_CREATE: 'https://apis.arquitecturabank.com/core/api/v1/crear-cuenta-ahorro'
 }

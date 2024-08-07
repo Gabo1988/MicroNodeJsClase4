@@ -1,14 +1,20 @@
-const { BACKEND_PERSONAL_INFORMATION } = require('../config');
+const { BACKEND_SAVING_ACCOUNT_DETAIL } = require('../config');
+const { BACKEND_SAVING_ACCOUNT_CREATE } = require('../config');
 
 const axios = require('axios').default
 
-class EmployeeDataManagementRepository {
+class SavingsAccountRepository {
 
-  async getPersonalInformation(request_backend) {
-    const response = await axios.post(BACKEND_PERSONAL_INFORMATION, request_backend);
+  async getSavingAccount(request_backend) {
+    const response = await axios.post(BACKEND_SAVING_ACCOUNT_DETAIL, request_backend);
+    return response.data;
+  }
+
+  async getCreateSavingAccount(request_backend) {
+    const response = await axios.post(BACKEND_SAVING_ACCOUNT_CREATE, request_backend);
     return response.data;
   }
 
 }
 
-module.exports = EmployeeDataManagementRepository;
+module.exports = SavingsAccountRepository;
