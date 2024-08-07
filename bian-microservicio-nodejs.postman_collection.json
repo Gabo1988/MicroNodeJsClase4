@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "f0d12437-0cf7-4d28-9dfa-32716348dbeb",
+		"name": "bian-microservicio-nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1880678"
+	},
+	"item": [
+		{
+			"name": "bian-savings-account (localhost) Detail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Account\": {\r\n        \"Identification\": \"5afe1233-7214\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/savings-account/v1.0/saving-account/retrieve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"savings-account",
+						"v1.0",
+						"saving-account",
+						"retrieve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bian-savings-account (localhost) Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"PersonIdentification\": {\r\n        \"TypeOfIdentification\": \"CEDULA\",\r\n        \"IdentityCardNumber\": \"111222333\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/savings-account/v1.0/create-saving-account/initiate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"savings-account",
+						"v1.0",
+						"create-saving-account",
+						"initiate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BACKEND_SAVING_ACCOUNT_DETAIL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numero_cuenta\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apis.arquitecturabank.com/core/api/v1/detalle-cuenta-ahorro",
+					"protocol": "https",
+					"host": [
+						"apis",
+						"arquitecturabank",
+						"com"
+					],
+					"path": [
+						"core",
+						"api",
+						"v1",
+						"detalle-cuenta-ahorro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BACKEND_SAVING_ACCOUNT_CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipo_documento\": \"CEDULA\",\r\n    \"numero_documento\": \"111222333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apis.arquitecturabank.com/core/api/v1/crear-cuenta-ahorro",
+					"protocol": "https",
+					"host": [
+						"apis",
+						"arquitecturabank",
+						"com"
+					],
+					"path": [
+						"core",
+						"api",
+						"v1",
+						"crear-cuenta-ahorro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
